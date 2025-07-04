@@ -44,7 +44,7 @@ headers = {
 
 def get_data():
     cur_time = datetime.datetime.now().strftime("%d_%m_%Y_%H_%M")
-    with open(f"omskshinservice_{cur_time}.csv", "w", encoding="utf-8") as f:
+    with open(f"omskshinservice_{cur_time}.csv", "w") as f:
         writer = csv.writer(f)
         writer.writerow(("Модель", "Ссылка", "Цена", "Харак-ки", "Оценки"))
 
