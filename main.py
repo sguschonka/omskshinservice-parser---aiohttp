@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 import datetime
-import csv
 import time
 import json
 import aiohttp
@@ -104,11 +103,15 @@ async def gather_data():
         await asyncio.gather(*tasks)
 
 def main():
+    cur_time = datetime.datetime.now().strftime("%d_%m_%Y_%H_%M")
+    
     asyncio.run(gather_data())
+    
+    with open(f'omskshinservice_{cur_time}.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=4, ensure_ascii=False)
     
     finish_time = time.time() - start_time
     print(f'Время исполнения: {finish_time}')
-    print(data)
 
 
 if __name__ == "__main__":
